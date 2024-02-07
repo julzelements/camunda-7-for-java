@@ -18,7 +18,7 @@ class ProcessJUnitTest {
   @Test
   @Deployment(resources = "TwitterQualityAssurance.bpmn")
   void testHappyPath() {
-    Map<String, Object> variables = new HashMap<String, Object>();
+    Map<String, Object> variables = new HashMap<>();
     variables.put("content", "Exercise 4 test - 🐥Tweet🐥");
     // start process with Java API and variables
 
@@ -33,7 +33,7 @@ class ProcessJUnitTest {
 
        Task task = taskList.get(0);
 
-       Map<String, Object> approvedMap = new HashMap<String, Object>();
+       Map<String, Object> approvedMap = new HashMap<>();
        approvedMap.put("approved", true);
        taskService().complete(task.getId(), approvedMap);
        assertThat(processInstance).isEnded();
