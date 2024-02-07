@@ -28,14 +28,14 @@
       <bpmn:outgoing>Flow_1xkevrq</bpmn:outgoing>
       <bpmn:script>print('Tweet rejected');</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:manualTask id="ReviewTweet" name="Review tweet">
-      <bpmn:incoming>Flow_0dww6lo</bpmn:incoming>
-      <bpmn:outgoing>Flow_1gfp5hu</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:serviceTask id="PublishTweet" name="Publish on twitter" camunda:class="com.camunda.training.CreateTweetDelegate">
       <bpmn:incoming>Approved</bpmn:incoming>
       <bpmn:outgoing>Flow_1jewgos</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:userTask id="ReviewTweet" name="Review tweet" camunda:candidateGroups="management">
+      <bpmn:incoming>Flow_0dww6lo</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gfp5hu</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TwitterQAProcess">
@@ -63,11 +63,11 @@
       <bpmndi:BPMNShape id="Activity_1phx5ae_di" bpmnElement="NotifyEmployeeOfRejection">
         <dc:Bounds x="530" y="200" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0f8zxhy_di" bpmnElement="ReviewTweet">
-        <dc:Bounds x="270" y="87" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_05pey2w_di" bpmnElement="PublishTweet">
         <dc:Bounds x="530" y="87" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dv6gn6_di" bpmnElement="ReviewTweet">
+        <dc:Bounds x="270" y="87" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0dww6lo_di" bpmnElement="Flow_0dww6lo">
         <di:waypoint x="215" y="127" />
