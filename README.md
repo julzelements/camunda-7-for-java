@@ -17,7 +17,11 @@ Template for the Camunda Training for Java Developers
 - [ ] Message Correlation with JUnit
 - [ ] Replace Business Task with Business Rule
 
+# Other notes
 
+* To start the application: `mvn clean spring-boot:run`
+* Open on http://localhost:8080/camunda/app/welcome/default/
+* Login with user: `demo`, password: `demo`.
 ## Maven Setup for Enterprise Version
 
 This template is ready to be used in the Camunda Enterprise version. You need to configure your Maven to access the artefacts from the private repository https://artifacts.camunda.com/artifactory/private/.

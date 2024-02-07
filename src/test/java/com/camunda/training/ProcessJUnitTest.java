@@ -15,28 +15,27 @@ import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 @ExtendWith(ProcessEngineCoverageExtension.class)
 class ProcessJUnitTest {
 
-  @Test
-  @Deployment(resources = "TwitterQualityAssurance.bpmn")
-  void testHappyPath() {
-    Map<String, Object> variables = new HashMap<>();
-    variables.put("content", "Exercise 4 test - 🐥Tweet🐥");
-    // start process with Java API and variables
+    @Test
+    @Deployment(resources = "TwitterQualityAssurance.bpmn")
+    void testHappyPath() {
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("content", "Exercise 4 test - 🐥Tweet🐥");
+        // start process with Java API and variables
 
-    ProcessInstance processInstance = runtimeService().startProcessInstanceByKey("TwitterQAProcess", variables);
-    assertThat(processInstance).isWaitingAt("ReviewTweet");
-    List<Task> taskList = taskService()
-            .createTaskQuery()
-            .taskCandidateGroup("management")
-            .processInstanceId(processInstance.getId())
-            .list();
-       assertThat(taskList).isNotNull().hasSize(1);
+        ProcessInstance processInstance = runtimeService().startProcessInstanceByKey("TwitterQAProcess", variables);
+        assertThat(processInstance).isWaitingAt("ReviewTweet");
+        List<Task> taskList = taskService()
+                .createTaskQuery()
+                .taskCandidateGroup("management")
+                .processInstanceId(processInstance.getId())
+                .list();
+        assertThat(taskList).isNotNull().hasSize(1);
 
-       Task task = taskList.get(0);
+        Task task = taskList.get(0);
 
-       Map<String, Object> approvedMap = new HashMap<>();
-       approvedMap.put("approved", true);
-       taskService().complete(task.getId(), approvedMap);
-       assertThat(processInstance).isEnded();
-  }
-
+        Map<String, Object> approvedMap = new HashMap<>();
+        approvedMap.put("approved", true);
+        taskService().complete(task.getId(), approvedMap);
+        assertThat(processInstance).isEnded();
+    }
 }
