@@ -9,7 +9,7 @@ Template for the Camunda Training for Java Developers
 - [x] Implement a service task
 - [x] Add Data Object & Implemnet a Gateway
 - [x] Add Human Tasks
-- [ ] Adding Task Forms
+- [x] Adding Task Forms
 - [ ] Adding Wait States
 - [ ] Complete the Test COverage
 - [ ] Implement an External Task Worker
