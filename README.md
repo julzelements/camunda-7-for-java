@@ -1,5 +1,22 @@
 # twitter-qa
 Template for the Camunda Training for Java Developers
+# Exercises:
+- [x] Twitter Process
+- [x] Install Camunda Modeller
+- [x] Create a Process Application
+- [x] Launch Camunda Platform
+- [x] Testing a process with Junit
+- [x] Implement a service task
+- [x] Add Data Object & Implemnet a Gateway
+- [x] Add Human Tasks
+- [ ] Adding Task Forms
+- [ ] Adding Wait States
+- [ ] Complete the Test COverage
+- [ ] Implement an External Task Worker
+- [ ] Rest Api
+- [ ] Message Correlation with JUnit
+- [ ] Replace Business Task with Business Rule
+
 
 ## Maven Setup for Enterprise Version
 
