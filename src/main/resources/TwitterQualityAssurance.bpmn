@@ -28,7 +28,8 @@
       <bpmn:outgoing>Flow_1xkevrq</bpmn:outgoing>
       <bpmn:script>print('Tweet rejected');</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:serviceTask id="PublishTweet" name="Publish on twitter" camunda:class="com.camunda.training.CreateTweetDelegate">
+    <bpmn:serviceTask id="PublishTweet" name="Publish on twitter" camunda:asyncBefore="true" camunda:class="com.camunda.training.CreateTweetDelegate">
+      <bpmn:extensionElements />
       <bpmn:incoming>Approved</bpmn:incoming>
       <bpmn:outgoing>Flow_1jewgos</bpmn:outgoing>
     </bpmn:serviceTask>

@@ -1,4 +1,5 @@
 package com.camunda.training;
+import org.camunda.bpm.engine.runtime.Job;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.test.Deployment;
@@ -36,6 +37,14 @@ class ProcessJUnitTest {
         Map<String, Object> approvedMap = new HashMap<>();
         approvedMap.put("approved", true);
         taskService().complete(task.getId(), approvedMap);
+
+        List<Job> jobList = jobQuery()
+                .processInstanceId(processInstance.getId())
+                .list();
+        assertThat(jobList).hasSize(1);
+        Job job = jobList.get(0);
+        execute(job);
+
         assertThat(processInstance).isEnded();
     }
 }
