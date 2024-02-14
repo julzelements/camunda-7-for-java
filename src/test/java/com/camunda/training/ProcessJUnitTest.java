@@ -47,4 +47,18 @@ class ProcessJUnitTest {
 
         assertThat(processInstance).isEnded();
     }
+
+    @Test
+    @Deployment(resources = "TwitterQualityAssurance.bpmn")
+    void testTweetRejected() {
+        Map<String, Object> varMap = new HashMap<>();
+        varMap.put("approved", false);
+
+        ProcessInstance processInstance = runtimeService()
+                .createProcessInstanceByKey("TwitterQAProcess")
+                .setVariables(varMap)
+                .startAfterActivity(findId("Review tweet"))
+                .execute();
+        assertThat(processInstance).isEnded().hasPassed(findId("Tweet rejected"));
+    }
 }

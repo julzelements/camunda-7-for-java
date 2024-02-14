@@ -11,7 +11,8 @@
   <description>Spring Boot Application using [Camunda](http://docs.camunda.org).</description>
 
   <properties>
-    <camunda.version>7.16.0</camunda.version>
+    <camunda.version>7.20.0</camunda.version>
+    <version.assertj>3.24.2</version.assertj>
     <springBoot.version>2.5.6</springBoot.version>
 
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -108,6 +109,12 @@
       <groupId>org.camunda.bpm.assert</groupId>
       <artifactId>camunda-bpm-assert</artifactId>
       <version>12.0.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${version.assertj}</version> <!-- set correct version here -->
       <scope>test</scope>
     </dependency>
     <dependency>
